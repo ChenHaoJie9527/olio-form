@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FieldLayout } from "@/components/ui/field-layout";
 import { TextField } from "@/components/ui/text-field";
+import { CloseIcon, PlusIcon } from "@/components/ui/icons";
 
 const demoSchema = v.object({
   email: v.pipe(v.string(), v.email("Please enter a valid email address.")),
@@ -99,7 +100,13 @@ export function ButtonDemo() {
       <Button>Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
+      <Button variant="text">Text</Button>
+      <Button variant="link">Link</Button>
       <Button loading>Saving</Button>
+      <Button size="icon" aria-label="close">
+        <CloseIcon />
+      </Button>
+      <Button icon={<PlusIcon />}>Add</Button>
     </div>
   );
 }

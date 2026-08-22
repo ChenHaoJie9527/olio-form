@@ -66,7 +66,7 @@ export function CodePanel({ files }: { files: SourceFile[] }) {
           {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
         </button>
       </div>
-      <pre className="max-h-[32rem] overflow-auto bg-card p-4 text-xs leading-6 text-foreground">
+      <pre className="max-h-128 overflow-auto bg-card p-4 text-xs leading-6 text-foreground">
         <code>{current.code}</code>
       </pre>
     </div>
