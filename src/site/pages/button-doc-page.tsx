@@ -6,7 +6,7 @@ export function ButtonDocPage() {
   return (
     <DocPage
       title="Button"
-      description="Submit and action button with loading and size variants."
+      description="Submit and action button with loading, size, text, and link variants."
       preview={<ButtonDemo />}
       files={sources.button}
     />
