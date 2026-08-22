@@ -1,13 +1,9 @@
-import { DocsLayout } from "@/site/layout";
-import { AppRoutes } from "@/site/pages/routes";
-import { RouterProvider } from "@/site/router";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import { routes } from "@/site/pages/routes";
+
+const router = createBrowserRouter(routes);
 
 export default function App() {
-  return (
-    <RouterProvider>
-      <DocsLayout>
-        <AppRoutes />
-      </DocsLayout>
-    </RouterProvider>
-  );
+  return <RouterProvider router={router} />;
 }
