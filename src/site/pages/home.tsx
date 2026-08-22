@@ -1,6 +1,6 @@
 import { CatalogCard } from "@/site/catalog";
 import { exampleCatalog } from "@/site/nav";
-import { Link } from "@/site/router";
+import { Link } from "react-router";
 
 export function HomePage() {
   return (
@@ -17,13 +17,13 @@ export function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/examples"
+              to="/examples"
               className="inline-flex h-11 items-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               Browse examples
             </Link>
             <Link
-              href="/docs"
+              to="/docs"
               className="inline-flex h-11 items-center rounded-lg border border-border bg-card px-4 text-sm font-medium text-foreground hover:bg-muted"
             >
               Get started
@@ -40,7 +40,7 @@ export function HomePage() {
               Start with authentication. Copy the schema and the composed form.
             </p>
           </div>
-          <Link href="/examples" className="hidden text-sm font-medium text-primary sm:inline">
+          <Link to="/examples" className="hidden text-sm font-medium text-primary sm:inline">
             View all
           </Link>
         </div>

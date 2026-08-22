@@ -1,10 +1,10 @@
-import { Link } from "@/site/router";
+import { Link } from "react-router";
 import type { CatalogItem } from "@/site/nav";
 
 export function CatalogCard({ item }: { item: CatalogItem }) {
   return (
     <Link
-      href={item.href}
+      to={item.href}
       className="group flex flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:bg-muted/40"
     >
       <h2 className="text-base font-semibold tracking-tight text-card-foreground">{item.title}</h2>

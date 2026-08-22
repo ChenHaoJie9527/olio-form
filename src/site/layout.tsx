@@ -1,9 +1,8 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
+import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { headerLinks } from "@/site/nav";
-import { Link } from "@/site/router";
-import { useRouter } from "@/site/router-context";
 
 function useDarkMode() {
   const [dark, setDark] = useState(() => {
@@ -23,18 +22,14 @@ function useDarkMode() {
   return { dark, toggle };
 }
 
-function isActive(path: string, href: string) {
-  return path === href || path.startsWith(`${href}/`);
-}
-
-export function DocsLayout({ children }: { children: ReactNode }) {
-  const { path } = useRouter();
+export function DocsLayout() {
+  const { pathname } = useLocation();
   const { dark, toggle } = useDarkMode();
   const [open, setOpen] = useState(false);
-  const [openForPath, setOpenForPath] = useState(path);
+  const [openForPath, setOpenForPath] = useState(pathname);
 
-  if (openForPath !== path) {
-    setOpenForPath(path);
+  if (openForPath !== pathname) {
+    setOpenForPath(pathname);
     setOpen(false);
   }
 
@@ -42,24 +37,26 @@ export function DocsLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-dvh flex-col bg-background text-foreground">
       <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto grid h-16 max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 md:px-6">
-          <Link href="/" className="text-sm font-semibold tracking-tight">
+          <Link to="/" className="text-sm font-semibold tracking-tight">
             olio-form
           </Link>
 
           <nav className="hidden items-center justify-center gap-6 md:flex">
             {headerLinks.map((item) => (
-              <Link
+              <NavLink
                 key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm",
-                  isActive(path, item.href)
-                    ? "font-medium text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
+                to={item.href}
+                className={({ isActive }) =>
+                  cn(
+                    "text-sm",
+                    isActive
+                      ? "font-medium text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
+                  )
+                }
               >
                 {item.title}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
@@ -73,7 +70,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
               {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
             </button>
             <Link
-              href="/docs"
+              to="/docs"
               className="hidden h-9 items-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 md:inline-flex"
             >
               Get started
@@ -93,21 +90,21 @@ export function DocsLayout({ children }: { children: ReactNode }) {
           <div className="border-t border-border px-4 py-3 md:hidden">
             <nav className="grid gap-1">
               {headerLinks.map((item) => (
-                <Link
+                <NavLink
                   key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "rounded-md px-2 py-2 text-sm",
-                    isActive(path, item.href)
-                      ? "bg-muted font-medium text-foreground"
-                      : "text-muted-foreground",
-                  )}
+                  to={item.href}
+                  className={({ isActive }) =>
+                    cn(
+                      "rounded-md px-2 py-2 text-sm",
+                      isActive ? "bg-muted font-medium text-foreground" : "text-muted-foreground",
+                    )
+                  }
                 >
                   {item.title}
-                </Link>
+                </NavLink>
               ))}
               <Link
-                href="/docs"
+                to="/docs"
                 className="mt-1 inline-flex h-10 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground"
               >
                 Get started
@@ -117,7 +114,9 @@ export function DocsLayout({ children }: { children: ReactNode }) {
         ) : null}
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <Outlet />
+      </main>
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between md:px-6">
@@ -125,7 +124,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
             {headerLinks.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="text-muted-foreground hover:text-foreground"
               >
                 {item.title}
