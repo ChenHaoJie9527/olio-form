@@ -4,18 +4,13 @@ interface ExamplesDrawerProps {
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   children?: React.ReactNode;
-  renderTrigger?: () => React.ReactElement;
+  trigger: React.ReactElement;
 }
 
-export function ExamplesDrawer({
-  title,
-  description,
-  children,
-  renderTrigger,
-}: ExamplesDrawerProps) {
+export function ExamplesDrawer({ title, description, children, trigger }: ExamplesDrawerProps) {
   return (
     <Drawer.Root swipeDirection="right">
-      <Drawer.Trigger>{renderTrigger?.()}</Drawer.Trigger>
+      <Drawer.Trigger render={trigger} />
       <Drawer.Portal>
         <Drawer.Backdrop className="[--backdrop-opacity:0.2] [--bleed:3rem] dark:[--backdrop-opacity:0.7] fixed inset-0 min-h-dvh bg-black opacity-[calc(var(--backdrop-opacity)*(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] data-swiping:duration-0 data-ending-style:opacity-0 data-starting-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] supports-[-webkit-touch-callout:none]:absolute" />
         <Drawer.Viewport className="[--viewport-padding:0px] supports-[-webkit-touch-callout:none]:[--viewport-padding:0.625rem] fixed inset-0 flex items-stretch justify-end p-(--viewport-padding)">

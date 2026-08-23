@@ -35,11 +35,11 @@ export function ExampleCard({ title, preview, code }: ExampleCardProps) {
           <ExamplesDrawer
             title={title}
             description="View the code for this example"
-            renderTrigger={() => (
+            trigger={
               <Button aria-label="View code" variant="text">
                 View code
               </Button>
-            )}
+            }
           >
             <pre className="overflow-auto border-t border-border bg-muted/40 p-4 text-xs leading-6 text-foreground">
               <code>{code}</code>
