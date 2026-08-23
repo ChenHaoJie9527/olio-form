@@ -70,10 +70,10 @@ export function DocsLayout() {
               {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
             </button>
             <Link
-              to="/docs"
+              to="/components"
               className="hidden h-9 items-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 md:inline-flex"
             >
-              Get started
+              Browse components
             </Link>
             <button
               type="button"
@@ -104,10 +104,10 @@ export function DocsLayout() {
                 </NavLink>
               ))}
               <Link
-                to="/docs"
+                to="/components"
                 className="mt-1 inline-flex h-10 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground"
               >
-                Get started
+                Browse components
               </Link>
             </nav>
           </div>

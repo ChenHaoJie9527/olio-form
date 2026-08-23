@@ -16,15 +16,20 @@ export function CatalogCard({ item }: { item: CatalogItem }) {
   );
 }
 
-export function CatalogPage({
-  title,
-  description,
-  items,
-}: {
+interface CatalogPageProps {
   title: string;
   description: string;
   items: CatalogItem[];
-}) {
+}
+
+/**
+ *
+ * @param title - The title of the catalog page.
+ * @param description - The description of the catalog page.
+ * @param items - The items to display in the catalog page.
+ * @returns
+ */
+export function CatalogPage({ title, description, items }: CatalogPageProps) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>

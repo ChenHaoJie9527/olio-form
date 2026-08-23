@@ -6,7 +6,6 @@ export type NavItem = {
 export const headerLinks: NavItem[] = [
   { title: "Components", href: "/components" },
   { title: "Examples", href: "/examples" },
-  { title: "Docs", href: "/docs" },
 ];
 
 export type CatalogItem = {

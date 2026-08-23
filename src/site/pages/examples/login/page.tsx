@@ -1,6 +1,5 @@
 import { LoginForm } from "@/components/examples/login/login-form";
-import { DocPage } from "@/site/doc-page";
-import { sources } from "@/site/sources";
+import { DocPage } from "@/site/shared/doc-page";
 
 export function LoginDocPage() {
   return (
@@ -8,7 +7,6 @@ export function LoginDocPage() {
       title="Login"
       description="Email, password, remember me, and a sample server error for blocked@example.com."
       preview={<LoginForm />}
-      files={sources.login}
     />
   );
 }

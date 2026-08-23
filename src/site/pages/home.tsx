@@ -1,4 +1,4 @@
-import { CatalogCard } from "@/site/catalog";
+import { CatalogCard } from "@/site/shared/catalog";
 import { exampleCatalog } from "@/site/nav";
 import { Link } from "react-router";
 
@@ -23,10 +23,10 @@ export function HomePage() {
               Browse examples
             </Link>
             <Link
-              to="/docs"
+              to="/components"
               className="inline-flex h-11 items-center rounded-lg border border-border bg-card px-4 text-sm font-medium text-foreground hover:bg-muted"
             >
-              Get started
+              Browse components
             </Link>
           </div>
         </div>

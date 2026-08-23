@@ -1,6 +1,5 @@
-import { TextFieldDemo } from "@/site/demos";
-import { DocPage } from "@/site/doc-page";
-import { sources } from "@/site/sources";
+import { TextFieldDemo } from "@/site/pages/components/text-field/demo";
+import { DocPage } from "@/site/shared/doc-page";
 
 export function TextFieldDocPage() {
   return (
@@ -8,7 +7,6 @@ export function TextFieldDocPage() {
       title="TextField"
       description="Native input wired through Formisch Field. Password fields include a visibility toggle."
       preview={<TextFieldDemo />}
-      files={sources.textField}
     >
       <p className="text-muted-foreground">
         Spread <code className="rounded bg-muted px-1.5 py-0.5">field.props</code> and pass{" "}

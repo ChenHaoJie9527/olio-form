@@ -1,4 +1,4 @@
-import { CatalogPage } from "@/site/catalog";
+import { CatalogPage } from "@/site/shared/catalog";
 import { exampleCatalog } from "@/site/nav";
 
 export function ExamplesCatalogPage() {
