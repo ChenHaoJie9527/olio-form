@@ -1,5 +1,7 @@
-import { useId, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Check, Copy } from "lucide-react";
+import { ExamplesDrawer } from "./examples-drawer";
+import { Button } from "../ui/button";
 
 type ExampleCardProps = {
   title: string;
@@ -8,8 +10,6 @@ type ExampleCardProps = {
 };
 
 export function ExampleCard({ title, preview, code }: ExampleCardProps) {
-  const codeId = useId();
-  const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -26,27 +26,26 @@ export function ExampleCard({ title, preview, code }: ExampleCardProps) {
         <div className="flex shrink-0 items-center gap-0.5">
           <button
             type="button"
-            onClick={() => void copy()}
+            onClick={() => copy()}
             className="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground hover:text-foreground"
             aria-label={copied ? "Copied" : "Copy code"}
           >
             {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
           </button>
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            className="rounded-md px-2 py-1 text-sm text-muted-foreground hover:text-foreground"
-            aria-expanded={open}
-            aria-controls={codeId}
+          <ExamplesDrawer
+            title={title}
+            description="View the code for this example"
+            renderTrigger={() => (
+              <Button aria-label="View code" variant="text">
+                View code
+              </Button>
+            )}
           >
-            View code
-          </button>
+            <pre className="overflow-auto border-t border-border bg-muted/40 p-4 text-xs leading-6 text-foreground">
+              <code>{code}</code>
+            </pre>
+          </ExamplesDrawer>
         </div>
-      </div>
-      <div id={codeId} hidden={!open}>
-        <pre className="overflow-auto border-t border-border bg-muted/40 p-4 text-xs leading-6 text-foreground">
-          <code>{code}</code>
-        </pre>
       </div>
     </div>
   );

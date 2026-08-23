@@ -1,0 +1,4 @@
+/* Trap header z-index inside the app root so body-level portals paint above it. */
+#root {
+  isolation: isolate;
+}
