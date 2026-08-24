@@ -11,9 +11,9 @@ const variantClass = {
 } as const;
 
 const sizeClass = {
-  sm: tw("h-9 rounded-md px-3 text-sm"),
-  md: tw("h-11 rounded-lg px-4 text-sm"),
-  lg: tw("h-12 rounded-lg px-6 text-base"),
+  sm: tw("h-9 rounded-sm px-3 text-sm"),
+  md: tw("h-11 rounded-sm px-4 text-sm"),
+  lg: tw("h-12 rounded-sm px-6 text-base"),
 } as const;
 
 const baseClass = tw(
