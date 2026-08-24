@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Check, Copy } from "lucide-react";
 import { ExamplesDrawer } from "./examples-drawer";
+import { CodeBlock } from "./code-block";
 
 type ExampleCardProps = {
   title: string;
@@ -44,9 +45,7 @@ export function ExampleCard({ title, preview, code }: ExampleCardProps) {
               </button>
             }
           >
-            <pre className="overflow-auto border-t border-border bg-muted/40 p-4 text-xs leading-6 text-foreground">
-              <code>{code}</code>
-            </pre>
+            <CodeBlock code={code} />
           </ExamplesDrawer>
         </div>
       </div>

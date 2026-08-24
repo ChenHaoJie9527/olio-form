@@ -1,0 +1,25 @@
+.code-block .shiki {
+  background: transparent !important;
+}
+
+.code-block .shiki code {
+  display: grid;
+  counter-reset: line;
+}
+
+.code-block .shiki .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.25rem;
+  margin-right: 1.25rem;
+  text-align: right;
+  color: var(--muted-foreground);
+  opacity: 0.55;
+}
+
+.dark .code-block .shiki,
+.dark .code-block .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
