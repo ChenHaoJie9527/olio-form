@@ -1,16 +1,12 @@
 import { Button } from "@base-ui/react/button";
-import { LoaderCircle as LoaderIcon } from "lucide-react";
 import { cn, tw } from "@/lib/utils";
 
 const variantClass = {
-  solid: tw(
+  success: tw(
+    "border-transparent bg-success text-success-foreground hover:bg-success/90 disabled:hover:bg-success",
+  ),
+  primary: tw(
     "border-transparent bg-primary text-primary-foreground hover:bg-primary/90 disabled:hover:bg-primary",
-  ),
-  outline: tw(
-    "border-primary bg-transparent text-primary hover:bg-primary/10 disabled:hover:bg-transparent",
-  ),
-  soft: tw(
-    "border-transparent bg-primary/10 text-primary hover:bg-primary/15 disabled:hover:bg-primary/10",
   ),
 } as const;
 
@@ -24,35 +20,24 @@ const baseClass = tw(
   "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 border font-medium whitespace-nowrap select-none transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 );
 
-type DefaultButtonProps = Omit<Button.Props, "className"> & {
+type FilledButtonProps = Omit<Button.Props, "className"> & {
   className?: string;
-  loading?: boolean;
   variant?: keyof typeof variantClass;
   size?: keyof typeof sizeClass;
 };
 
-export default function DefaultButton({
+export default function FilledButton({
   className,
   type = "button",
-  loading = false,
-  disabled,
-  focusableWhenDisabled,
-  children,
-  variant = "solid",
+  variant = "success",
   size = "md",
   ...props
-}: DefaultButtonProps) {
+}: FilledButtonProps) {
   return (
     <Button
       type={type}
-      disabled={disabled || loading}
-      focusableWhenDisabled={loading || focusableWhenDisabled}
-      aria-busy={loading || undefined}
       className={cn(baseClass, variantClass[variant], sizeClass[size], className)}
       {...props}
-    >
-      {loading ? <LoaderIcon className="size-4 animate-spin" aria-hidden="true" /> : null}
-      {children}
-    </Button>
+    />
   );
 }

@@ -18,7 +18,7 @@ export const componentCatalog: CatalogItem[] = [
   {
     title: "Button",
     href: "/components/button",
-    description: "Submit and action button with loading, size, text, and link variants.",
+    description: "Submit and action button with variant, size, and loading.",
   },
   {
     title: "FieldLayout",

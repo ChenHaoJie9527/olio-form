@@ -18,19 +18,19 @@ Replace the homemade History SPA router (`src/site/router.tsx`, `src/site/router
 
 ## Current behavior to preserve
 
-| URL | UI |
-| --- | --- |
-| `/` | `HomePage` |
-| `/docs` | `GetStartedPage` |
-| `/components` | `CatalogPage` for `componentCatalog` |
-| `/examples` | `CatalogPage` for `exampleCatalog` |
-| `/components/button` | Button `DocPage` |
-| `/components/field-layout` | FieldLayout `DocPage` |
-| `/components/text-field` | TextField `DocPage` (including the extra usage paragraph) |
-| `/components/checkbox` | Checkbox `DocPage` |
-| `/examples/login` | Login `DocPage` |
-| `/examples/register` | Register `DocPage` |
-| anything else | Not found copy inside the site layout |
+| URL                        | UI                                                        |
+| -------------------------- | --------------------------------------------------------- |
+| `/`                        | `HomePage`                                                |
+| `/docs`                    | `GetStartedPage`                                          |
+| `/components`              | `CatalogPage` for `componentCatalog`                      |
+| `/examples`                | `CatalogPage` for `exampleCatalog`                        |
+| `/components/button`       | Button `DocPage`                                          |
+| `/components/field-layout` | FieldLayout `DocPage`                                     |
+| `/components/text-field`   | TextField `DocPage` (including the extra usage paragraph) |
+| `/components/checkbox`     | Checkbox `DocPage`                                        |
+| `/examples/login`          | Login `DocPage`                                           |
+| `/examples/register`       | Register `DocPage`                                        |
+| anything else              | Not found copy inside the site layout                     |
 
 Header active state: a header link is active when `pathname === href` or `pathname.startsWith(href + "/")`. `NavLink` default matching is equivalent; do not set `end` on those header/mobile links.
 

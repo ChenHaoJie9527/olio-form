@@ -35,10 +35,12 @@
 ### Task 1: Install react-router 8
 
 **Files:**
+
 - Modify: `package.json`
 - Modify: lockfile (`package-lock.json` or `pnpm-lock.yaml`, whichever exists)
 
 **Interfaces:**
+
 - Consumes: none
 - Produces: `react-router` 8.x available to import from `react-router` and `react-router/dom`
 
@@ -90,6 +92,7 @@ EOF
 Do this task as one swap so the app never imports both routers. After this task, homemade router files are gone and TypeScript must pass.
 
 **Files:**
+
 - Modify: `src/site/pages/routes.tsx`
 - Modify: `src/App.tsx`
 - Modify: `src/site/layout.tsx`
@@ -99,6 +102,7 @@ Do this task as one swap so the app never imports both routers. After this task,
 - Delete: `src/site/router-context.tsx`
 
 **Interfaces:**
+
 - Consumes: `react-router` from Task 1; existing page components (`HomePage`, `GetStartedPage`, `CatalogPage`, `DocPage`, demos, example forms, `sources`, catalogs in `nav.ts`)
 - Produces: `export const routes: RouteObject[]` from `@/site/pages/routes`; `DocsLayout` with no props, rendering `<Outlet />`; site links use `to` not `href`
 
@@ -172,8 +176,8 @@ function TextFieldDocPage() {
       <p className="text-muted-foreground">
         Spread <code className="rounded bg-muted px-1.5 py-0.5">field.props</code> and pass{" "}
         <code className="rounded bg-muted px-1.5 py-0.5">input</code> plus{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5">errors</code>. Do not keep a second
-        value in local state.
+        <code className="rounded bg-muted px-1.5 py-0.5">errors</code>. Do not keep a second value
+        in local state.
       </p>
     </DocPage>
   );
@@ -525,6 +529,7 @@ EOF
 **Files:** none (runtime check)
 
 **Interfaces:**
+
 - Consumes: Task 2 app
 - Produces: confirmation that URLs and chrome still match the spec table
 
@@ -538,19 +543,19 @@ Expected: Vite serves the app (typically `http://localhost:5173`).
 
 - [ ] **Step 2: Click through these URLs (or open them directly)**
 
-| URL | Expected |
-| --- | --- |
-| `/` | HomePage |
-| `/docs` | GetStartedPage |
-| `/components` | Components catalog |
-| `/examples` | Examples catalog |
-| `/components/button` | Button DocPage |
-| `/components/field-layout` | FieldLayout DocPage |
-| `/components/text-field` | TextField DocPage including the extra usage paragraph |
-| `/components/checkbox` | Checkbox DocPage |
-| `/examples/login` | Login DocPage |
-| `/examples/register` | Register DocPage |
-| `/does-not-exist` | “Not found” / “That page is not part of the first slice.” inside header+footer |
+| URL                        | Expected                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------ |
+| `/`                        | HomePage                                                                       |
+| `/docs`                    | GetStartedPage                                                                 |
+| `/components`              | Components catalog                                                             |
+| `/examples`                | Examples catalog                                                               |
+| `/components/button`       | Button DocPage                                                                 |
+| `/components/field-layout` | FieldLayout DocPage                                                            |
+| `/components/text-field`   | TextField DocPage including the extra usage paragraph                          |
+| `/components/checkbox`     | Checkbox DocPage                                                               |
+| `/examples/login`          | Login DocPage                                                                  |
+| `/examples/register`       | Register DocPage                                                               |
+| `/does-not-exist`          | “Not found” / “That page is not part of the first slice.” inside header+footer |
 
 Also check: header `Components` is active on `/components/button`; mobile menu closes after a nav tap; browser Back returns to the previous page without a full reload.
 
