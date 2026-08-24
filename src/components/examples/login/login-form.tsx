@@ -1,6 +1,6 @@
 import { Field, Form, setErrors, useForm } from "@formisch/react";
 import type { SubmitEventHandler } from "@formisch/react";
-import { Button } from "@/components/ui/button";
+import DefaultButton from "@/site/pages/components/button/examples/default";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TextField } from "@/components/ui/text-field";
 import { loginSchema } from "@/components/examples/login/schema";
@@ -89,9 +89,9 @@ export function LoginForm() {
         </div>
       </div>
 
-      <Button type="submit" className="mt-6 w-full" loading={form.isSubmitting}>
+      <DefaultButton type="submit" className="mt-6 w-full" loading={form.isSubmitting}>
         Sign in
-      </Button>
+      </DefaultButton>
 
       <p className="mt-4 text-center text-sm text-muted-foreground">
         Don&apos;t have an account?{" "}

@@ -1,7 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Check, Copy } from "lucide-react";
 import { ExamplesDrawer } from "./examples-drawer";
-import { Button } from "../ui/button";
 
 type ExampleCardProps = {
   title: string;
@@ -36,9 +35,13 @@ export function ExampleCard({ title, preview, code }: ExampleCardProps) {
             title={title}
             description="View the code for this example"
             trigger={
-              <Button aria-label="View code" variant="text">
+              <button
+                type="button"
+                className="inline-flex h-8 items-center rounded-md px-2 text-sm text-muted-foreground hover:text-foreground"
+                aria-label="View code"
+              >
                 View code
-              </Button>
+              </button>
             }
           >
             <pre className="overflow-auto border-t border-border bg-muted/40 p-4 text-xs leading-6 text-foreground">
