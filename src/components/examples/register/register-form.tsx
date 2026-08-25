@@ -1,9 +1,9 @@
 import { Field, Form, useForm } from "@formisch/react";
 import type { SubmitEventHandler } from "@formisch/react";
-import DefaultButton from "@/site/pages/components/button/examples/default";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TextField } from "@/components/ui/text-field";
 import { registerSchema } from "@/components/examples/register/schema";
+import { Button } from "@base-ui/react/button";
 
 export function RegisterForm() {
   const form = useForm({
@@ -104,9 +104,9 @@ export function RegisterForm() {
         </Field>
       </div>
 
-      <DefaultButton type="submit" className="mt-6 w-full" loading={form.isSubmitting}>
+      <Button type="submit" className="mt-6 w-full">
         Create account
-      </DefaultButton>
+      </Button>
 
       <p className="mt-4 text-center text-sm text-muted-foreground">
         Already have an account?{" "}
