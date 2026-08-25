@@ -38,7 +38,7 @@ const appearanceClass = {
   filled: filledTone,
   round: filledTone,
   ghost: tw(
-    "border-transparent bg-transparent text-(--btn-on) hover:bg-(--btn-bg)/10 active:bg-(--btn-bg)/20 disabled:not-aria-busy:opacity-50 disabled:not-aria-busy:hover:bg-transparent",
+    "border-(--btn-on) bg-transparent text-(--btn-on) hover:bg-(--btn-bg)/10 active:bg-(--btn-bg)/20 disabled:not-aria-busy:opacity-50 disabled:not-aria-busy:hover:bg-transparent",
   ),
   outline: tw(
     "border-(--btn-on) bg-transparent text-(--btn-on) hover:bg-(--btn-bg) hover:text-(--btn-fg) active:bg-(--btn-bg)/90 active:text-(--btn-fg) disabled:not-aria-busy:opacity-50 disabled:not-aria-busy:hover:bg-transparent disabled:not-aria-busy:hover:text-(--btn-on)",
