@@ -1,5 +1,3 @@
-import { CatalogCard } from "@/site/shared/catalog";
-import { exampleCatalog } from "@/site/nav";
 import { Link } from "react-router";
 
 export function HomePage() {
@@ -43,11 +41,6 @@ export function HomePage() {
           <Link to="/examples" className="hidden text-sm font-medium text-primary sm:inline">
             View all
           </Link>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {exampleCatalog.map((item) => (
-            <CatalogCard key={item.href} item={item} />
-          ))}
         </div>
       </section>
     </>
