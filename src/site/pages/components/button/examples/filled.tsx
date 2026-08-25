@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus as PlusIcon } from "lucide-react";
+import { Loader, Plus as PlusIcon } from "lucide-react";
 
 function Row({ children }: { children: ReactNode }) {
   return <div className="flex flex-wrap items-center gap-3">{children}</div>;
@@ -251,6 +251,26 @@ export default function FilledExample() {
             >
               <PlusIcon className="size-3.5" />
             </Button>
+          </Row>
+        </Block>
+      </section>
+      <section className="grid gap-6">
+        <h3 className="text-lg font-semibold tracking-tight">Loading</h3>
+        <Block title="Loading">
+          <Row>
+            <Button
+              appearance="filled"
+              variant="primary"
+              size="sm"
+              loading
+              aria-label="Small Button"
+            />
+            <Button
+              loading
+              aria-label="Small Button"
+              size="sm"
+              loadingIcon={<Loader className="size-4 animate-spin" />}
+            />
           </Row>
         </Block>
       </section>

@@ -15,6 +15,7 @@ type ButtonProps = Omit<ButtonPrimitive.Props, "className"> & {
   loading?: boolean;
   icon?: boolean;
   children?: ReactNode;
+  loadingIcon?: ReactNode;
 };
 
 const variantClass = {
@@ -76,9 +77,14 @@ export function Button({
   icon = false,
   disabled,
   children,
+  loadingIcon,
   ...props
 }: ButtonProps) {
   const isDisabled = disabled || loading;
+
+  const indicator = loading
+    ? (loadingIcon ?? <LoaderCircle className="size-4 animate-spin" aria-hidden />)
+    : null;
 
   return (
     <ButtonPrimitive
@@ -96,7 +102,7 @@ export function Button({
         className,
       )}
     >
-      {loading ? <LoaderCircle className="size-4 animate-spin" aria-hidden /> : null}
+      {indicator}
       {children}
     </ButtonPrimitive>
   );
