@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cn, tw } from "@/lib/utils";
-import { LoaderIcon } from "@/components/ui/icons";
+import { LoaderCircle } from "lucide-react";
 
 export type ButtonAppearance = "filled" | "ghost" | "outline" | "round";
 export type ButtonVariant = "primary" | "secondary" | "neutral";
@@ -96,7 +96,7 @@ export function Button({
         className,
       )}
     >
-      {loading ? <LoaderIcon className="size-4 animate-spin" aria-hidden /> : null}
+      {loading ? <LoaderCircle className="size-4 animate-spin" aria-hidden /> : null}
       {children}
     </ButtonPrimitive>
   );

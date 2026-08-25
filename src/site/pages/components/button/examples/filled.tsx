@@ -1,71 +1,259 @@
-import { Button, type ButtonSize, type ButtonVariant } from "@/components/ui/button";
-import { PlusIcon } from "@/components/ui/icons";
+import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Plus as PlusIcon } from "lucide-react";
 
-const variants = ["primary", "secondary", "neutral"] as const satisfies ButtonVariant[];
-const states = ["default", "disabled"] as const;
-const sizes = ["lg", "md", "sm"] as const satisfies ButtonSize[];
+function Row({ children }: { children: ReactNode }) {
+  return <div className="flex flex-wrap items-center gap-3">{children}</div>;
+}
 
-const sizeLabel = {
-  lg: "Large Button",
-  md: "Medium Button",
-  sm: "Small Button",
-} as const;
-
-const iconSizeClass = {
-  lg: "size-5",
-  md: "size-4",
-  sm: "size-3.5",
-} as const;
-
-function label(value: string) {
-  return value.charAt(0).toUpperCase() + value.slice(1);
+function Block({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="grid gap-3">
+      <p className="text-sm font-medium text-muted-foreground">{title}</p>
+      {children}
+    </div>
+  );
 }
 
 export default function FilledExample() {
   return (
     <div className="grid gap-10">
-      {variants.map((variant) => (
-        <section key={variant} className="grid gap-6">
-          <h3 className="text-lg font-semibold tracking-tight">{label(variant)}</h3>
-          {states.map((state) => {
-            const disabled = state === "disabled";
+      <section className="grid gap-6">
+        <h3 className="text-lg font-semibold tracking-tight">Primary</h3>
+        <Block title="Default">
+          <Row>
+            <Button appearance="filled" variant="primary" size="lg">
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="primary" size="md">
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="primary" size="sm">
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button appearance="filled" variant="primary" size="lg" icon aria-label="Large Button">
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button appearance="filled" variant="primary" size="md" icon aria-label="Medium Button">
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button appearance="filled" variant="primary" size="sm" icon aria-label="Small Button">
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+        <Block title="Disabled">
+          <Row>
+            <Button appearance="filled" variant="primary" size="lg" disabled>
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="primary" size="md" disabled>
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="primary" size="sm" disabled>
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button
+              appearance="filled"
+              variant="primary"
+              size="lg"
+              icon
+              disabled
+              aria-label="Large Button"
+            >
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="primary"
+              size="md"
+              icon
+              disabled
+              aria-label="Medium Button"
+            >
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="primary"
+              size="sm"
+              icon
+              disabled
+              aria-label="Small Button"
+            >
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+      </section>
 
-            return (
-              <div key={state} className="grid gap-3">
-                <p className="text-sm font-medium text-muted-foreground">{label(state)}</p>
-                <div className="flex flex-wrap items-center gap-3">
-                  {sizes.map((size) => (
-                    <Button
-                      key={size}
-                      appearance="filled"
-                      variant={variant}
-                      size={size}
-                      disabled={disabled}
-                    >
-                      {sizeLabel[size]}
-                    </Button>
-                  ))}
-                </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  {sizes.map((size) => (
-                    <Button
-                      key={size}
-                      appearance="filled"
-                      variant={variant}
-                      size={size}
-                      icon
-                      disabled={disabled}
-                      aria-label={sizeLabel[size]}
-                    >
-                      <PlusIcon className={iconSizeClass[size]} />
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </section>
-      ))}
+      <section className="grid gap-6">
+        <h3 className="text-lg font-semibold tracking-tight">Secondary</h3>
+        <Block title="Default">
+          <Row>
+            <Button appearance="filled" variant="secondary" size="lg">
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="secondary" size="md">
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="secondary" size="sm">
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="lg"
+              icon
+              aria-label="Large Button"
+            >
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="md"
+              icon
+              aria-label="Medium Button"
+            >
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="sm"
+              icon
+              aria-label="Small Button"
+            >
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+        <Block title="Disabled">
+          <Row>
+            <Button appearance="filled" variant="secondary" size="lg" disabled>
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="secondary" size="md" disabled>
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="secondary" size="sm" disabled>
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="lg"
+              icon
+              disabled
+              aria-label="Large Button"
+            >
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="md"
+              icon
+              disabled
+              aria-label="Medium Button"
+            >
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="secondary"
+              size="sm"
+              icon
+              disabled
+              aria-label="Small Button"
+            >
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+      </section>
+
+      <section className="grid gap-6">
+        <h3 className="text-lg font-semibold tracking-tight">Neutral</h3>
+        <Block title="Default">
+          <Row>
+            <Button appearance="filled" variant="neutral" size="lg">
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="neutral" size="md">
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="neutral" size="sm">
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button appearance="filled" variant="neutral" size="lg" icon aria-label="Large Button">
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button appearance="filled" variant="neutral" size="md" icon aria-label="Medium Button">
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button appearance="filled" variant="neutral" size="sm" icon aria-label="Small Button">
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+        <Block title="Disabled">
+          <Row>
+            <Button appearance="filled" variant="neutral" size="lg" disabled>
+              Large Button
+            </Button>
+            <Button appearance="filled" variant="neutral" size="md" disabled>
+              Medium Button
+            </Button>
+            <Button appearance="filled" variant="neutral" size="sm" disabled>
+              Small Button
+            </Button>
+          </Row>
+          <Row>
+            <Button
+              appearance="filled"
+              variant="neutral"
+              size="lg"
+              icon
+              disabled
+              aria-label="Large Button"
+            >
+              <PlusIcon className="size-5" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="neutral"
+              size="md"
+              icon
+              disabled
+              aria-label="Medium Button"
+            >
+              <PlusIcon className="size-4" />
+            </Button>
+            <Button
+              appearance="filled"
+              variant="neutral"
+              size="sm"
+              icon
+              disabled
+              aria-label="Small Button"
+            >
+              <PlusIcon className="size-3.5" />
+            </Button>
+          </Row>
+        </Block>
+      </section>
     </div>
   );
 }
