@@ -3,21 +3,21 @@ import { cn, tw } from "@/lib/utils";
 
 const variantClass = {
   success: tw(
-    "border-transparent bg-success text-success-foreground hover:bg-success/90 disabled:hover:bg-success",
+    "[--filled-bg:oklch(0.73_0.13_165)] [--filled-fg:oklch(0.99_0_0)] dark:[--filled-bg:oklch(0.76_0.12_165)] dark:[--filled-fg:oklch(0.18_0.03_260)]",
   ),
   primary: tw(
-    "border-transparent bg-primary text-primary-foreground hover:bg-primary/90 disabled:hover:bg-primary",
+    "[--filled-bg:oklch(0.42_0.14_255)] [--filled-fg:oklch(0.99_0_0)] dark:[--filled-bg:oklch(0.72_0.12_255)] dark:[--filled-fg:oklch(0.18_0.03_260)]",
   ),
 } as const;
 
 const sizeClass = {
   sm: tw("h-9 rounded-sm px-3 text-sm"),
-  md: tw("h-11 rounded-sm px-4 text-sm"),
-  lg: tw("h-12 rounded-sm px-6 text-base"),
+  md: tw("h-11 rounded-sm px-5 text-sm"),
+  lg: tw("h-12 rounded-sm px-7 text-base"),
 } as const;
 
 const baseClass = tw(
-  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 border font-medium whitespace-nowrap select-none transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 border border-transparent bg-(--filled-bg) font-medium text-(--filled-fg) whitespace-nowrap select-none transition-colors outline-none hover:bg-(--filled-bg)/90 focus-visible:ring-2 focus-visible:ring-(--filled-bg)/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-(--filled-bg) dark:focus-visible:ring-offset-neutral-950 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 );
 
 type FilledButtonProps = Omit<Button.Props, "className"> & {

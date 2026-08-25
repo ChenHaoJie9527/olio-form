@@ -93,8 +93,15 @@ const buttonExamples = [
     title: "Filled button",
     preview: (
       <PreviewRow>
-        <FilledButton variant="success">Success</FilledButton>
-        <FilledButton variant="primary">Primary</FilledButton>
+        <FilledButton variant="success" size="sm">
+          Success
+        </FilledButton>
+        <FilledButton variant="primary" size="md">
+          Primary
+        </FilledButton>
+        <FilledButton variant="primary" size="lg">
+          Primary
+        </FilledButton>
       </PreviewRow>
     ),
     code: filledSource,
