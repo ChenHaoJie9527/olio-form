@@ -41,7 +41,7 @@ export function DocsLayout() {
             olio-form
           </Link>
 
-          <nav className="hidden items-center justify-center gap-6 md:flex">
+          {/* <nav className="hidden items-center justify-center gap-6 md:flex">
             {headerLinks.map((item) => (
               <NavLink
                 key={item.href}
@@ -58,9 +58,9 @@ export function DocsLayout() {
                 {item.title}
               </NavLink>
             ))}
-          </nav>
+          </nav> */}
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-end gap-2">
             <button
               type="button"
               className="inline-flex size-9 items-center justify-center rounded-md border border-border"
