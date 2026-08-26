@@ -29,7 +29,7 @@ export function TextField({
   const [visible, setVisible] = useState(false);
   const isPassword = type === "password";
   const disabled = formDisabled || disabledProp;
-  const describedBy = errors ? `${name}-error` : undefined;
+  const describedBy = `${name}-error`;
 
   const control = (
     <div className={cn("relative min-w-0", layout === "inline" ? "w-52" : "w-full")}>

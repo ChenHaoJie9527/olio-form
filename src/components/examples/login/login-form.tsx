@@ -82,7 +82,7 @@ function LoginFormFields() {
       of={form}
       onSubmit={onSubmit}
       className={cn(
-        "w-full rounded-[16px] border border-[oklch(0.9_0.012_260)] bg-white p-6 shadow-sm md:p-8 dark:border-[oklch(0.32_0.02_260)] dark:bg-[oklch(0.21_0.02_260)]",
+        "w-full rounded-sm border border-[oklch(0.9_0.012_260)] bg-white p-6 shadow-sm md:p-8 dark:border-[oklch(0.32_0.02_260)] dark:bg-[oklch(0.21_0.02_260)]",
         layout === "inline" ? "max-w-3xl" : layout === "horizontal" ? "max-w-lg" : "max-w-md",
       )}
     >
@@ -96,8 +96,8 @@ function LoginFormFields() {
           className={cn(
             layout === "inline" && "flex flex-wrap items-end gap-3",
             layout === "horizontal" &&
-              "grid grid-cols-[max-content_minmax(0,1fr)] items-start gap-x-3 gap-y-4",
-            layout === "vertical" && "grid gap-4",
+              "grid grid-cols-[max-content_minmax(0,1fr)] items-start gap-x-3 gap-y-1",
+            layout === "vertical" && "grid gap-1",
           )}
         >
           <Field of={form} path={["email"]}>
@@ -144,6 +144,7 @@ function LoginFormFields() {
                   checked={field.input === true}
                   errors={field.errors}
                   label="Remember me"
+                  required
                 />
               )}
             </Field>

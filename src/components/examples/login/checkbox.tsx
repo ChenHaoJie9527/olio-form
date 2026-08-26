@@ -1,14 +1,17 @@
+import type { ReactNode } from "react";
 import type { FieldElementProps } from "@formisch/react";
 import { CheckIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { useFormUi } from "@/components/examples/login/form-context";
-import { errorClass } from "@/components/examples/login/styles";
+import { FieldError } from "@/components/examples/login/field-frame";
+import { requiredMarkClass } from "@/components/examples/login/styles";
 
 type CheckboxProps = FieldElementProps & {
-  label: string;
+  label: ReactNode;
   checked?: boolean;
   errors: [string, ...string[]] | null;
   disabled?: boolean;
+  required?: boolean;
 };
 
 export function Checkbox({
@@ -17,12 +20,18 @@ export function Checkbox({
   errors,
   name,
   disabled: disabledProp,
+  required,
   ...props
 }: CheckboxProps) {
-  const { disabled: formDisabled } = useFormUi();
+  const { disabled: formDisabled, requiredMark } = useFormUi();
   const disabled = formDisabled || disabledProp;
   const isChecked = checked === true;
-  const describedBy = errors ? `${name}-error` : undefined;
+  const describedBy = `${name}-error`;
+  const mark = required ? (
+    <span className={requiredMarkClass} aria-hidden="true">
+      *
+    </span>
+  ) : null;
 
   return (
     <div className="grid gap-1.5">
@@ -35,6 +44,7 @@ export function Checkbox({
             type="checkbox"
             checked={isChecked}
             disabled={disabled}
+            required={required}
             aria-invalid={!!errors}
             aria-describedby={describedBy}
             className="peer sr-only"
@@ -51,13 +61,23 @@ export function Checkbox({
             {isChecked ? <CheckIcon className="size-3.5" /> : null}
           </span>
         </span>
-        <span className="leading-5">{label}</span>
+        <span className="leading-5">
+          {requiredMark === "before" ? (
+            <>
+              {mark}
+              {mark ? " " : null}
+              {label}
+            </>
+          ) : (
+            <>
+              {label}
+              {mark ? " " : null}
+              {mark}
+            </>
+          )}
+        </span>
       </label>
-      {errors ? (
-        <p id={`${name}-error`} role="alert" className={errorClass}>
-          {errors[0]}
-        </p>
-      ) : null}
+      <FieldError name={name} errors={errors} />
     </div>
   );
 }

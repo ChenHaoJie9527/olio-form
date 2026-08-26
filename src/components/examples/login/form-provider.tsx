@@ -12,5 +12,5 @@ export function FormUiProvider({
     [layout, disabled, requiredMark],
   );
 
-  return <FormUiContext.Provider value={value}>{children}</FormUiContext.Provider>;
+  return <FormUiContext value={value}>{children}</FormUiContext>;
 }

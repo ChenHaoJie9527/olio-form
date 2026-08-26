@@ -1,6 +1,25 @@
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import { useFormUi } from "@/components/examples/login/form-context";
 import { errorClass } from "@/components/examples/login/styles";
+
+export function FieldError({
+  name,
+  errors,
+}: {
+  name: string;
+  errors: [string, ...string[]] | null;
+}) {
+  return (
+    <p
+      id={`${name}-error`}
+      role={errors ? "alert" : undefined}
+      className={cn(errorClass, "min-h-5 truncate", !errors && "invisible")}
+    >
+      {errors?.[0]}
+    </p>
+  );
+}
 
 export function FieldFrame({
   name,
@@ -14,11 +33,7 @@ export function FieldFrame({
   children: ReactNode;
 }) {
   const { layout } = useFormUi();
-  const error = errors ? (
-    <p id={`${name}-error`} role="alert" className={errorClass}>
-      {errors[0]}
-    </p>
-  ) : null;
+  const error = <FieldError name={name} errors={errors} />;
 
   if (layout === "horizontal") {
     return (

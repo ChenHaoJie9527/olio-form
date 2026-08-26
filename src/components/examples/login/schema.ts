@@ -11,5 +11,5 @@ export const loginSchema = v.object({
     v.nonEmpty("Please enter your password."),
     v.minLength(8, "Password must be at least 8 characters."),
   ),
-  rememberMe: v.boolean(),
+  rememberMe: v.pipe(v.boolean(), v.value(true, "Please check Remember me.")),
 });
