@@ -1,11 +1,41 @@
+import type { ReactNode } from "react";
 import { Field, Form, setErrors, useForm } from "@formisch/react";
 import type { SubmitEventHandler } from "@formisch/react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { TextField } from "@/components/ui/text-field";
 import { loginSchema } from "@/components/examples/login/schema";
-import { Button } from "@base-ui/react/button";
+import { Checkbox } from "@/components/examples/login/checkbox";
+import { FormUiProvider } from "@/components/examples/login/form-provider";
+import {
+  useFormUi,
+  type FormLayout,
+  type RequiredMark,
+} from "@/components/examples/login/form-context";
+import { TextField } from "@/components/examples/login/text-field";
+import { submitClass } from "@/components/examples/login/styles";
+import { cn } from "@/lib/utils";
 
-export function LoginForm() {
+export function FormTitle({ title }: { title: string | ReactNode }) {
+  return (
+    <h1 className="text-xl font-semibold tracking-tight text-[oklch(0.22_0.02_260)] dark:text-[oklch(0.96_0.01_80)]">
+      {title}
+    </h1>
+  );
+}
+
+export function FormDescription({ description }: { description: string | ReactNode }) {
+  return (
+    <p className="text-sm text-[oklch(0.5_0.02_260)] dark:text-[oklch(0.72_0.02_260)]">
+      {description}
+    </p>
+  );
+}
+
+export type LoginFormProps = {
+  layout?: FormLayout;
+  disabled?: boolean;
+  requiredMark?: RequiredMark;
+};
+
+function LoginFormFields() {
   const form = useForm({
     schema: loginSchema,
     initialInput: {
@@ -14,6 +44,7 @@ export function LoginForm() {
       rememberMe: false,
     },
   });
+  const { layout, disabled } = useFormUi();
 
   const onSubmit: SubmitEventHandler<typeof loginSchema> = (output) => {
     if (output.email === "blocked@example.com") {
@@ -27,78 +58,115 @@ export function LoginForm() {
     console.log(output);
   };
 
+  const submitButton = (
+    <button
+      type="submit"
+      disabled={disabled}
+      className={cn(submitClass, layout !== "inline" && "mt-6 w-full")}
+    >
+      Sign in
+    </button>
+  );
+
+  const forgotLink = (
+    <a
+      href="/forgot-password"
+      className="shrink-0 text-sm font-medium text-[#0a60ff] underline-offset-4 hover:underline dark:text-[#3d7dff]"
+    >
+      Forgot password?
+    </a>
+  );
+
   return (
     <Form
       of={form}
       onSubmit={onSubmit}
-      className="w-full max-w-md rounded-xl border border-border bg-card p-6 shadow-sm md:p-8"
+      className={cn(
+        "w-full rounded-[16px] border border-[oklch(0.9_0.012_260)] bg-white p-6 shadow-sm md:p-8 dark:border-[oklch(0.32_0.02_260)] dark:bg-[oklch(0.21_0.02_260)]",
+        layout === "inline" ? "max-w-3xl" : layout === "horizontal" ? "max-w-lg" : "max-w-md",
+      )}
     >
-      <div className="mb-6 grid gap-1">
-        <h1 className="text-xl font-semibold tracking-tight text-card-foreground">Sign in</h1>
-        <p className="text-sm text-muted-foreground">Enter your email and password to continue.</p>
-      </div>
+      <fieldset disabled={disabled} className="m-0 min-w-0 border-0 p-0">
+        <div className="mb-6 grid gap-1">
+          <FormTitle title="Sign in" />
+          <FormDescription description="Enter your email and password to continue." />
+        </div>
 
-      <div className="grid gap-4">
-        <Field of={form} path={["email"]}>
-          {(field) => (
-            <TextField
-              {...field.props}
-              input={field.input}
-              errors={field.errors}
-              type="email"
-              label="Email"
-              placeholder="you@example.com"
-              autoComplete="email"
-              required
-            />
+        <div
+          className={cn(
+            layout === "inline" && "flex flex-wrap items-end gap-3",
+            layout === "horizontal" &&
+              "grid grid-cols-[max-content_minmax(0,1fr)] items-start gap-x-3 gap-y-4",
+            layout === "vertical" && "grid gap-4",
           )}
-        </Field>
-
-        <Field of={form} path={["password"]}>
-          {(field) => (
-            <TextField
-              {...field.props}
-              input={field.input}
-              errors={field.errors}
-              type="password"
-              label="Password"
-              placeholder="••••••••"
-              autoComplete="current-password"
-              required
-            />
-          )}
-        </Field>
-
-        <div className="flex items-center justify-between gap-3">
-          <Field of={form} path={["rememberMe"]}>
+        >
+          <Field of={form} path={["email"]}>
             {(field) => (
-              <Checkbox
+              <TextField
                 {...field.props}
-                checked={field.input === true}
+                input={field.input}
                 errors={field.errors}
-                label="Remember me"
+                type="email"
+                label="Email"
+                placeholder="you@example.com"
+                autoComplete="email"
+                required
               />
             )}
           </Field>
-          <a
-            href="/forgot-password"
-            className="shrink-0 text-sm font-medium text-primary underline-offset-4 hover:underline"
+
+          <Field of={form} path={["password"]}>
+            {(field) => (
+              <TextField
+                {...field.props}
+                input={field.input}
+                errors={field.errors}
+                type="password"
+                label="Password"
+                placeholder="••••••••"
+                autoComplete="current-password"
+                required
+              />
+            )}
+          </Field>
+
+          <div
+            className={cn(
+              "flex items-center gap-3",
+              layout === "vertical" && "justify-between",
+              layout === "horizontal" && "col-start-2 justify-between",
+            )}
           >
-            Forgot password?
-          </a>
+            <Field of={form} path={["rememberMe"]}>
+              {(field) => (
+                <Checkbox
+                  {...field.props}
+                  checked={field.input === true}
+                  errors={field.errors}
+                  label="Remember me"
+                />
+              )}
+            </Field>
+            {forgotLink}
+          </div>
+
+          {layout === "inline" ? submitButton : null}
         </div>
-      </div>
 
-      <Button type="submit" className="mt-6 w-full">
-        Sign in
-      </Button>
-
-      <p className="mt-4 text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{" "}
-        <a href="/register" className="font-medium text-primary underline-offset-4 hover:underline">
-          Create one
-        </a>
-      </p>
+        {layout === "inline" ? null : submitButton}
+      </fieldset>
     </Form>
+  );
+}
+
+export function LoginForm({
+  layout = "vertical",
+  disabled = false,
+  requiredMark = "before",
+}: LoginFormProps) {
+  return (
+    <FormUiProvider layout={layout} disabled={disabled} requiredMark={requiredMark}>
+      <LoginFormFields />
+    </FormUiProvider>
   );
 }
