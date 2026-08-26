@@ -26,13 +26,13 @@ export function FieldLayout({
     <div className={cn("grid gap-1.5", className)}>
       {label ? (
         <label htmlFor={name} className="text-sm font-medium text-foreground">
-          {label}
           {required ? (
             <span className="text-danger" aria-hidden="true">
               {" "}
               *
             </span>
           ) : null}
+          {label}
         </label>
       ) : null}
       {description ? (
