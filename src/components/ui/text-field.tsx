@@ -14,8 +14,8 @@ type TextFieldProps = FieldElementProps &
   };
 
 const sizeClass: Record<FieldSize, string> = {
-  sm: "h-9 rounded-md px-3 text-sm",
-  md: "h-11 rounded-lg px-3.5 text-sm",
+  sm: "h-9 rounded-sm px-3 text-sm",
+  md: "h-11 rounded-sm px-3.5 text-sm",
 };
 
 export function TextField({
