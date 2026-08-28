@@ -22,21 +22,6 @@ export const componentCatalog: CatalogItem[] = [
   {
     title: "Form",
     href: "/components/form",
-    description: "Copy-paste form templates wired with Formisch and Valibot.",
+    description: "Copy-paste Formisch fields and a Form shell.",
   },
 ];
-
-export const formCatalog: CatalogItem[] = [
-  {
-    title: "Login",
-    href: "/components/form/login",
-    description: "Email, password, remember me, and a sample server error.",
-  },
-  {
-    title: "Register",
-    href: "/components/form/register",
-    description: "Email, password confirmation, and a required terms checkbox.",
-  },
-];
-
-
