@@ -7,7 +7,11 @@ import { TextField } from "@/components/ui/text-field";
 import { Button } from "@/components/ui/button";
 
 const schema = v.object({
-  email: v.pipe(v.string(), v.nonEmpty("Please enter your email."), v.email("Please enter a valid email address.")),
+  email: v.pipe(
+    v.string(),
+    v.nonEmpty("Please enter your email."),
+    v.email("Please enter a valid email address."),
+  ),
 });
 
 const layouts: FormLayout[] = ["vertical", "horizontal", "inline"];
@@ -40,7 +44,14 @@ export default function LayoutDemo() {
       </div>
       <Form of={form} layout={layout} onSubmit={onSubmit} className="max-w-lg">
         <div className={layout === "inline" ? "flex flex-wrap items-end gap-3" : "grid gap-4"}>
-          <TextField of={form} path={["email"]} label="Email" type="email" placeholder="you@example.com" required />
+          <TextField
+            of={form}
+            path={["email"]}
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
           <Button type="submit">Submit</Button>
         </div>
       </Form>

@@ -1,27 +1,17 @@
 export type NavItem = {
-  title: string;
   href: string;
 };
 
-export const headerLinks: NavItem[] = [
-  { title: "Components", href: "/components" },
-];
+export const headerLinks: NavItem[] = [{ href: "/components" }];
+
+export type CatalogId = "button" | "form";
 
 export type CatalogItem = {
-  title: string;
+  id: CatalogId;
   href: string;
-  description: string;
 };
 
 export const componentCatalog: CatalogItem[] = [
-  {
-    title: "Button",
-    href: "/components/button",
-    description: "Submit and action button with variant, size, and loading.",
-  },
-  {
-    title: "Form",
-    href: "/components/form",
-    description: "Copy-paste Formisch fields and a Form shell.",
-  },
+  { id: "button", href: "/components/button" },
+  { id: "form", href: "/components/form" },
 ];

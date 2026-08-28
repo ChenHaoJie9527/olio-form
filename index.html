@@ -9,6 +9,9 @@
       if (localStorage.getItem("olio-theme") === "dark") {
         document.documentElement.classList.add("dark");
       }
+      if (localStorage.getItem("olio-locale") === "zh") {
+        document.documentElement.lang = "zh-CN";
+      }
     </script>
   </head>
   <body>

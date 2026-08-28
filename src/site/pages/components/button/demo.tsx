@@ -9,31 +9,32 @@ import GhostExample from "./examples/ghost";
 import OutlineExample from "./examples/outline";
 import RoundExample from "./examples/round";
 import buttonUtils from "@/lib/utils.ts?raw";
+import { useLocale, type MessageKey } from "@/site/i18n";
 
 const buttonExamples = [
   {
-    title: "Filled",
+    titleKey: "buttonFilled" satisfies MessageKey,
     preview: <FilledExample />,
     code: filledSource,
     source: buttonSource,
     utils: buttonUtils,
   },
   {
-    title: "Ghost",
+    titleKey: "buttonGhost" satisfies MessageKey,
     preview: <GhostExample />,
     code: ghostSource,
     source: buttonSource,
     utils: buttonUtils,
   },
   {
-    title: "Outline",
+    titleKey: "buttonOutline" satisfies MessageKey,
     preview: <OutlineExample />,
     code: outlineSource,
     source: buttonSource,
     utils: buttonUtils,
   },
   {
-    title: "Round",
+    titleKey: "buttonRound" satisfies MessageKey,
     preview: <RoundExample />,
     code: roundSource,
     source: buttonSource,
@@ -42,10 +43,20 @@ const buttonExamples = [
 ] as const;
 
 export function ButtonDemo() {
+  const { t } = useLocale();
+
   return (
     <div className="grid gap-4">
       {buttonExamples.map((example) => (
-        <ExampleCard key={example.title} {...example} layout="flush" utils={buttonUtils} />
+        <ExampleCard
+          key={example.titleKey}
+          title={t(example.titleKey)}
+          preview={example.preview}
+          code={example.code}
+          source={example.source}
+          layout="flush"
+          utils={buttonUtils}
+        />
       ))}
     </div>
   );

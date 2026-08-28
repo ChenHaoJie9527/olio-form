@@ -3,6 +3,7 @@ import { Tabs } from "@base-ui/react/tabs";
 import { ExamplesDrawer } from "./examples-drawer";
 import { CodeBlock } from "./code-block";
 import { cn, tw } from "@/lib/utils";
+import { useLocale } from "@/site/i18n";
 
 type ExampleCardProps = {
   title: string;
@@ -26,14 +27,16 @@ function ExampleCodeTabs({
   source: string;
   utils?: string;
 }) {
+  const { t } = useLocale();
+
   return (
     <Tabs.Root defaultValue="usage">
       <Tabs.List className="relative flex gap-5 border-b border-border px-4">
         <Tabs.Tab value="usage" className={tabClasses}>
-          Usage
+          {t("usage")}
         </Tabs.Tab>
         <Tabs.Tab value="source" className={tabClasses}>
-          Source
+          {t("source")}
         </Tabs.Tab>
         <Tabs.Tab value="utils" className={tabClasses}>
           lib/utils.ts
@@ -61,6 +64,8 @@ export function ExampleCard({
   layout = "center",
   utils,
 }: ExampleCardProps) {
+  const { t } = useLocale();
+
   return (
     <div className="min-w-0 overflow-hidden rounded-xl border border-border bg-card">
       <div
@@ -77,16 +82,14 @@ export function ExampleCard({
         <div className="flex shrink-0 items-center">
           <ExamplesDrawer
             title={title}
-            description={
-              source ? "Usage example and component source" : "View the code for this example"
-            }
+            description={source ? t("drawerUsageAndSource") : t("drawerViewExample")}
             trigger={
               <button
                 type="button"
                 className="inline-flex h-8 items-center rounded-md px-2 text-sm text-muted-foreground hover:text-foreground"
-                aria-label="View code"
+                aria-label={t("viewCode")}
               >
-                View code
+                {t("viewCode")}
               </button>
             }
           >

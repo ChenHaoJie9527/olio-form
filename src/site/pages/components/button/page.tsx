@@ -1,11 +1,14 @@
 import { ButtonDemo } from "@/site/pages/components/button/demo";
 import { DocPage } from "@/site/shared/doc-page";
+import { useLocale } from "@/site/i18n";
 
 export function ButtonDocPage() {
+  const { t } = useLocale();
+
   return (
     <DocPage
-      title="Button"
-      description="Submit and action button with variant, size, and loading."
+      title={t("buttonTitle")}
+      description={t("buttonDescription")}
       className="max-w-5xl"
       framed={false}
       preview={<ButtonDemo />}
