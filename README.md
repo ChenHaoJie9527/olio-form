@@ -7,8 +7,8 @@ Copy-paste form UI for [Formisch](https://formisch.dev/) and [Valibot](https://v
 ## Current scope
 
 - Site chrome (marketing layout, no docs sidebar)
-- Primitives: `Button`, `FieldLayout`, `TextField`, `Checkbox`
-- Examples: Login, Register
+- Kit: `Form`, `TextField`, `Checkbox`, `Button`, `FieldLayout`
+- Form docs: stacked demos (`basic`, `layout`) on `/components/form`
 
 ## Run locally
 
@@ -19,7 +19,7 @@ pnpm dev
 
 Other scripts: `pnpm build`, `pnpm lint`, `pnpm fmt`.
 
-Copied files live under `src/components/ui`, `src/components/examples`, and `src/lib`. The docs site in `src/site` is not part of the copy-paste contract.
+Copied files live under `src/components/ui` and `src/lib`. Demo usage files live under `src/site/pages/components/form/demos` and are not part of the kit. The docs site in `src/site` is not part of the copy-paste contract.
 
 ## Not done yet
 

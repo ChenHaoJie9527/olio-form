@@ -11,15 +11,15 @@ export function HomePage() {
             Production form UI you own
           </h1>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
-            olio-form is a catalog of Formisch + Valibot templates. Copy the files into your app.
-            There is no UI package to install.
+            olio-form is copy-paste form UI for Formisch and Valibot. Copy the kit into
+            your app, then copy a demo as a starting page. There is no UI package to install.
           </p>
         </div>
       </section>
       <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <h2 className="text-3xl font-semibold tracking-tight">Components</h2>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Copy these primitives first. Examples are composed from them.
+          Copy the kit, then copy a demo.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {componentCatalog.map((item) => (
