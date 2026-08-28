@@ -6,6 +6,7 @@ import textFieldSource from "@/components/ui/text-field.tsx?raw";
 import checkboxSource from "@/components/ui/checkbox.tsx?raw";
 import fieldLayoutSource from "@/components/ui/field-layout.tsx?raw";
 import buttonSource from "@/components/ui/button.tsx?raw";
+import iconsSource from "@/components/ui/icons.tsx?raw";
 import utilsSource from "@/lib/utils.ts?raw";
 
 const kitFiles = [
@@ -14,6 +15,7 @@ const kitFiles = [
   { path: "components/ui/checkbox.tsx", code: checkboxSource },
   { path: "components/ui/field-layout.tsx", code: fieldLayoutSource },
   { path: "components/ui/button.tsx", code: buttonSource },
+  { path: "components/ui/icons.tsx", code: iconsSource },
   { path: "lib/utils.ts", code: utilsSource },
 ] as const;
 
@@ -57,7 +59,10 @@ export function FormDocPage() {
           Install peers, then copy these files into the same paths in your app.
         </p>
         <pre className="mt-4 overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 text-sm">
-          <code>pnpm add @formisch/react valibot</code>
+          <code>
+            pnpm add @formisch/react valibot @base-ui/react lucide-react clsx
+            tailwind-merge
+          </code>
         </pre>
         <div className="mt-6 grid gap-4">
           {kitFiles.map((file) => (

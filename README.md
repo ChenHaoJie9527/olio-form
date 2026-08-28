@@ -7,7 +7,7 @@ Copy-paste form UI for [Formisch](https://formisch.dev/) and [Valibot](https://v
 ## Current scope
 
 - Site chrome (marketing layout, no docs sidebar)
-- Kit: `Form`, `TextField`, `Checkbox`, `Button`, `FieldLayout`
+- Kit: `Form`, `TextField`, `Checkbox`, `Button`, `FieldLayout`, `icons`
 - Form docs: stacked demos (`basic`, `layout`) on `/components/form`
 
 ## Run locally
