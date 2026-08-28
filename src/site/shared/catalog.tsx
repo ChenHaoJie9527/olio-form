@@ -4,6 +4,7 @@ import type { CatalogId, CatalogItem } from "@/site/nav";
 
 const catalogKeys: Record<CatalogId, { title: MessageKey; description: MessageKey }> = {
   button: { title: "catalogButtonTitle", description: "catalogButtonDescription" },
+  "text-field": { title: "catalogTextFieldTitle", description: "catalogTextFieldDescription" },
   form: { title: "catalogFormTitle", description: "catalogFormDescription" },
 };
 

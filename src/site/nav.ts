@@ -4,7 +4,7 @@ export type NavItem = {
 
 export const headerLinks: NavItem[] = [{ href: "/components" }];
 
-export type CatalogId = "button" | "form";
+export type CatalogId = "button" | "text-field" | "form";
 
 export type CatalogItem = {
   id: CatalogId;
@@ -13,5 +13,6 @@ export type CatalogItem = {
 
 export const componentCatalog: CatalogItem[] = [
   { id: "button", href: "/components/button" },
+  { id: "text-field", href: "/components/text-field" },
   { id: "form", href: "/components/form" },
 ];
