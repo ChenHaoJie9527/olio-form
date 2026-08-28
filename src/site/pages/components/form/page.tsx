@@ -1,17 +1,7 @@
 import { FormDemo } from "@/site/pages/components/form/demo";
+import { ApiTable } from "@/site/shared/api-table";
 import { DocPage } from "@/site/shared/doc-page";
-import { useLocale, type Translate } from "@/site/i18n";
-
-function ApiHead({ t }: { t: Translate }) {
-  return (
-    <thead>
-      <tr className="border-b border-border">
-        <th className="py-2 pr-4 font-medium">{t("apiProp")}</th>
-        <th className="py-2 pr-4 font-medium">{t("apiDescription")}</th>
-      </tr>
-    </thead>
-  );
-}
+import { useLocale } from "@/site/i18n";
 
 export function FormDocPage() {
   const { t } = useLocale();
@@ -36,32 +26,16 @@ export function FormDocPage() {
           </a>
           {t("formApiLeadAfter")}
         </p>
-        <div className="mt-6 overflow-x-auto">
-          <table className="w-full border-collapse text-left">
-            <ApiHead t={t} />
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="py-2 pr-4 font-mono">of</td>
-                <td className="py-2">{t("apiFormOf")}</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 pr-4 font-mono">onSubmit</td>
-                <td className="py-2">{t("apiFormOnSubmit")}</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 pr-4 font-mono">layout</td>
-                <td className="py-2">{t("apiFormLayout")}</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 pr-4 font-mono">disabled</td>
-                <td className="py-2">{t("apiFormDisabled")}</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 pr-4 font-mono">requiredMark</td>
-                <td className="py-2">{t("apiFormRequiredMark")}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="mt-6">
+          <ApiTable
+            rows={[
+              { prop: "of", description: t("apiFormOf") },
+              { prop: "onSubmit", description: t("apiFormOnSubmit") },
+              { prop: "layout", description: t("apiFormLayout") },
+              { prop: "disabled", description: t("apiFormDisabled") },
+              { prop: "requiredMark", description: t("apiFormRequiredMark") },
+            ]}
+          />
         </div>
       </section>
     </DocPage>
