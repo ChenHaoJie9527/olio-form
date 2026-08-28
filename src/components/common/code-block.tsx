@@ -25,7 +25,7 @@ export function HighlightedCode({ code, lang = "tsx" }: CodeBlockProps) {
   });
   return (
     <div
-      className="code-block overflow-auto p-4 pt-12 text-xs leading-6"
+      className="code-block max-w-full min-w-0 overflow-x-auto p-4 pt-12 text-xs leading-6"
       dangerouslySetInnerHTML={{
         __html: html,
       }}
@@ -42,7 +42,7 @@ export function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-muted/40 mx-4 mt-2">
+    <div className="relative mx-4 mt-2 max-w-full min-w-0 overflow-hidden rounded-xl border border-border bg-muted/40">
       <button
         type="button"
         onClick={onCopy}

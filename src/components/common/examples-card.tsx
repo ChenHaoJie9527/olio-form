@@ -62,12 +62,12 @@ export function ExampleCard({
   utils,
 }: ExampleCardProps) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-border bg-card">
       <div
         className={cn(
           layout === "center"
             ? "flex min-h-48 items-center justify-center p-8"
-            : "overflow-x-auto p-5",
+            : "min-w-0 overflow-x-auto p-5",
         )}
       >
         {preview}

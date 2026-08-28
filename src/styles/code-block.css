@@ -1,5 +1,7 @@
 .code-block .shiki {
   background: transparent !important;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .code-block .shiki code {

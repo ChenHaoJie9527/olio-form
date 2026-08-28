@@ -1,5 +1,6 @@
 import { ExampleCard } from "@/components/common";
 import { CodeBlock } from "@/components/common/code-block";
+import { ExamplesDrawer } from "@/components/common/examples-drawer";
 import { formDemos } from "@/site/pages/components/form/demos";
 import formSource from "@/components/ui/form.tsx?raw";
 import textFieldSource from "@/components/ui/text-field.tsx?raw";
@@ -19,9 +20,32 @@ const kitFiles = [
   { path: "lib/utils.ts", code: utilsSource },
 ] as const;
 
+function KitFileRow({ path, code }: { path: string; code: string }) {
+  return (
+    <div className="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-2.5">
+      <p className="truncate font-mono text-sm text-muted-foreground">{path}</p>
+      <ExamplesDrawer
+        title={path}
+        description="Copy this file into the same path in your app."
+        trigger={
+          <button
+            type="button"
+            className="inline-flex h-8 shrink-0 items-center rounded-md px-2 text-sm text-muted-foreground hover:text-foreground"
+            aria-label={`View ${path}`}
+          >
+            View code
+          </button>
+        }
+      >
+        <CodeBlock code={code} />
+      </ExamplesDrawer>
+    </div>
+  );
+}
+
 export function FormDocPage() {
   return (
-    <article className="mx-auto max-w-5xl px-4 py-12 md:px-6">
+    <article className="mx-auto w-full min-w-0 max-w-5xl px-4 py-12 md:px-6">
       <h1 className="text-3xl font-semibold tracking-tight">Form</h1>
       <p className="mt-2 text-muted-foreground">
         Copy-paste form UI for Formisch and Valibot. You own the files.
@@ -58,20 +82,12 @@ export function FormDocPage() {
         <p className="mt-2 text-sm text-muted-foreground">
           Install peers, then copy these files into the same paths in your app.
         </p>
-        <pre className="mt-4 overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 text-sm">
-          <code>
-            pnpm add @formisch/react valibot @base-ui/react lucide-react clsx
-            tailwind-merge
-          </code>
+        <pre className="mt-4 max-w-full overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 text-sm">
+          <code>pnpm add @formisch/react valibot @base-ui/react lucide-react clsx tailwind-merge</code>
         </pre>
-        <div className="mt-6 grid gap-4">
+        <div className="mt-6 grid min-w-0 gap-3">
           {kitFiles.map((file) => (
-            <div key={file.path}>
-              <h3 className="text-sm font-medium text-foreground">{file.path}</h3>
-              <div className="mt-2 overflow-hidden rounded-xl border border-border">
-                <CodeBlock code={file.code} />
-              </div>
-            </div>
+            <KitFileRow key={file.path} path={file.path} code={file.code} />
           ))}
         </div>
       </section>
